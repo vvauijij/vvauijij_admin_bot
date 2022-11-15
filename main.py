@@ -167,11 +167,11 @@ def is_promote_command(query) -> bool:
 
 
 def can_promote(query, chat_id) -> bool:
-    ban_permission = set()
+    promote_permission = set()
     for user in bot.get_chat_administrators(chat_id):
         if user.status == 'creator' or user.can_promote_members:
-            ban_permission.add(user.user.id)
-    return query.from_user.id in ban_permission
+            promote_permission.add(user.user.id)
+    return query.from_user.id in promote_permission
 
 
 @bot.inline_handler(is_promote_command)
