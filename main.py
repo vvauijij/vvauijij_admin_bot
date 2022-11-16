@@ -29,7 +29,7 @@ class INFO:
 
 info = INFO()
 
-TOKEN = '5465885153:AAGaqmxaQEwOGBeEWc4LuxGIqbj5viLQbtw'
+TOKEN = ''
 bot = telebot.TeleBot(TOKEN)
 
 
