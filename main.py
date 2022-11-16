@@ -29,7 +29,7 @@ class INFO:
 
 info = INFO()
 
-TOKEN = ''
+TOKEN = '5465885153:AAGaqmxaQEwOGBeEWc4LuxGIqbj5viLQbtw'
 bot = telebot.TeleBot(TOKEN)
 
 
@@ -282,16 +282,19 @@ def chat_info(query):
                 message_text='no chat with such title: to see chat information complete "/info @chat_title" inline'))
         bot.answer_inline_query(query.id, [invalid_chat_info])
     else:
-        valid_chat_info = types.InlineQueryResultArticle(
-            id=1,
-            title=f'{chat_title} info: '
-                  f'members: {bot.get_chat_member_count(info.chat_titles[chat_title])} '
-                  f'admins: {len(bot.get_chat_administrators(info.chat_titles[chat_title]))}',
-            description='',
-            input_message_content=types.InputTextMessageContent(
-                message_text=f'{chat_title} info: '
-                             f'members: {bot.get_chat_member_count(info.chat_titles[chat_title])} '
-                             f'admins: {len(bot.get_chat_administrators(info.chat_titles[chat_title]))}'))
+        try:
+            valid_chat_info = types.InlineQueryResultArticle(
+                id=1,
+                title=f'{chat_title} info: '
+                      f'members: {bot.get_chat_member_count(info.chat_titles[chat_title])} '
+                      f'admins: {len(bot.get_chat_administrators(info.chat_titles[chat_title]))}',
+                description='',
+                input_message_content=types.InputTextMessageContent(
+                    message_text=f'{chat_title} info: '
+                                 f'members: {bot.get_chat_member_count(info.chat_titles[chat_title])} '
+                                 f'admins: {len(bot.get_chat_administrators(info.chat_titles[chat_title]))}'))
+        except Exception:
+            pass
 
         bot.answer_inline_query(query.id, [valid_chat_info])
 
