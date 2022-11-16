@@ -293,10 +293,9 @@ def chat_info(query):
                     message_text=f'{chat_title} info: '
                                  f'members: {bot.get_chat_member_count(info.chat_titles[chat_title])} '
                                  f'admins: {len(bot.get_chat_administrators(info.chat_titles[chat_title]))}'))
+            bot.answer_inline_query(query.id, [valid_chat_info])
         except Exception:
             pass
-
-        bot.answer_inline_query(query.id, [valid_chat_info])
 
 
 def is_kick_bot_command(query) -> bool:
